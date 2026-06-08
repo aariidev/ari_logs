@@ -435,3 +435,61 @@ RegisterNetEvent('ari_logs:server:testWebhook', function()
         notifyNoPermission(src)
     end
 end)
+
+-- ==========================================
+-- VERSION CHECKER
+-- ==========================================
+
+local GITHUB_USER = "aariidev"
+local GITHUB_REPO = "ari_logs"
+
+CreateThread(function()
+    Wait(5000)
+
+    local currentVersion = GetResourceMetadata(GetCurrentResourceName(), "version", 0)
+
+    PerformHttpRequest(
+        ("https://api.github.com/repos/%s/%s/releases/latest"):format(
+            GITHUB_USER,
+            GITHUB_REPO
+        ),
+        function(statusCode, response)
+            if statusCode ~= 200 then
+                print("^3[ari_logs]^7 No se pudo comprobar si existen actualizaciones.")
+                return
+            end
+
+            local success, data = pcall(json.decode, response)
+
+            if not success or not data then
+                print("^1[ari_logs]^7 Error al procesar la respuesta de GitHub.")
+                return
+            end
+
+            local latestVersion = data.tag_name
+
+            if not latestVersion then
+                return
+            end
+
+            if latestVersion ~= currentVersion then
+                print("^3========================================================^7")
+                print("^3[ari_logs]^7 Nueva versión disponible")
+                print(("^7Versión instalada: ^1%s^7"):format(currentVersion))
+                print(("^7Última versión: ^2%s^7"):format(latestVersion))
+                print(("^7Descargar: ^5https://github.com/%s/%s/releases^7"):format(
+                    GITHUB_USER,
+                    GITHUB_REPO
+                ))
+                print("^3========================================================^7")
+            else
+                print(("^2[ari_logs]^7 Versión actual (%s)"):format(currentVersion))
+            end
+        end,
+        "GET",
+        "",
+        {
+            ["User-Agent"] = "FiveM ari_logs"
+        }
+    )
+end)
