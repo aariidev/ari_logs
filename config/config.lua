@@ -1,14 +1,14 @@
 Config = {}
 
-Config.BotName = "Logs Ari Tets | ari_logs"
+Config.BotName = "Pon lo que quieras aqui| ari_logs"
 
 -- Configuración de Webhooks por categoría
 Config.Webhooks = {
-    default    = "https://discord.com/api/webhooks/1497386820009328776/eAY_2YzoMcb27O_OaTFSbtLh1KWqBLPy_fYUwqGj0FLP33K_DqqJzt6hpl_wsiz4TLef",
-    joins      = "https://discord.com/api/webhooks/1497386820009328776/eAY_2YzoMcb27O_OaTFSbtLh1KWqBLPy_fYUwqGj0FLP33K_DqqJzt6hpl_wsiz4TLef", -- Cambia esto por tu webhook real
-    chat       = "https://discord.com/api/webhooks/1497386820009328776/eAY_2YzoMcb27O_OaTFSbtLh1KWqBLPy_fYUwqGj0FLP33K_DqqJzt6hpl_wsiz4TLef", -- Cambia esto por tu webhook real
-    deaths     = "https://discord.com/api/webhooks/1497386820009328776/eAY_2YzoMcb27O_OaTFSbtLh1KWqBLPy_fYUwqGj0FLP33K_DqqJzt6hpl_wsiz4TLef", -- Cambia esto por tu webhook real
-    moderation = "https://discord.com/api/webhooks/1497386820009328776/eAY_2YzoMcb27O_OaTFSbtLh1KWqBLPy_fYUwqGj0FLP33K_DqqJzt6hpl_wsiz4TLef", -- Cambia esto por tu webhook real
+    default    = "",
+    joins      = "", -- Cambia esto por tu webhook real
+    chat       = "", -- Cambia esto por tu webhook real
+    deaths     = "", -- Cambia esto por tu webhook real
+    moderation = "", -- Cambia esto por tu webhook real
 }
 
 -- Configuración de Permisos
@@ -20,7 +20,7 @@ Config.AdminGroups = {
 
 -- Lista de Discord IDs que también tendrán permiso (si no usan ESX groups o para dar permisos directos)
 Config.Admins = {
-    "discord:819080793447333918"
+    "" --  discord:123456789012345678
 }
 
 -- Opciones de Privacidad
